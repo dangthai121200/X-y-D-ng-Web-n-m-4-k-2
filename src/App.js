@@ -1,8 +1,18 @@
-import React from 'react'
+import React from 'react';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import NavBar from './component/NavBar/NavBar';
+
+
 
 const App = () => {
   return (
-    <div>Hello Word</div>
+    <BrowserRouter>
+        <NavBar/>
+        <Routes>
+          
+        </Routes>
+
+  </BrowserRouter>
   )
 }
 
