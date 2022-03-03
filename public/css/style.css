@@ -327,19 +327,19 @@ svg {
 .cateImage {
   width: 100%;
   height: 33.1rem;
-  background: url(../../images/work.jpg) center no-repeat;
+  background: url(../images/work.jpg) center no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .cateImage--2 {
-  background: url(../../images/gaming.jpg) center no-repeat;
+  background: url(../images/gaming.jpg) center no-repeat;
   background-size: cover;
 }
 
 .cateImage--3 {
-  background: url(../../images/high.jpg) center no-repeat;
+  background: url(../images/high.jpg) center no-repeat;
   background-size: cover;
 }
 .cateImage_overlay {
@@ -588,18 +588,18 @@ svg {
   color: var(--third-color);
 }
 .sub1 {
-  background: url(../../images/workspace.jpg) center no-repeat;
+  background: url(../images/workspace.jpg) center no-repeat;
   background-size: cover;
   height: 41.6rem;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 }
 .sub2 {
-  background: url(../../images/gamingspace.jpg) center no-repeat;
+  background: url(../images/gamingspace.jpg) center no-repeat;
   background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 }
 .sub3 {
-  background: url(../../images/luxuriesspace.jpg) center no-repeat;
+  background: url(../images/luxuriesspace.jpg) center no-repeat;
   background-size: cover;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
 }
@@ -779,7 +779,7 @@ svg {
   margin: 5rem;
 }
 .contact {
-  background: url(../../images/contact.png) center no-repeat;
+  background: url(../images/contact.png) center no-repeat;
   background-size: cover;
   color: white;
   box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);

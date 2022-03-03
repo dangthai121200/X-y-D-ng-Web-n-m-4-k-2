@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import "./NavBar.css";
 import imgLogo from "../../images/logo.png";
 
 
@@ -27,33 +26,33 @@ const NavBar = () => {
                     <Link to="Laptop">Laptop</Link>
                 </li>
                 <li>
-                    <a to="Accessory">Phụ kiện</a>
+                    <Link to="Accessory">Phụ kiện</Link>
                 </li>
                 <li><Link to="Envent">Sự kiện</Link></li>
                 <li><Link to="Contact">Liên hệ</Link></li>
                 <li><Link to="Aboutus">Về chúng tôi</Link></li>
             </ul>
-            {/* <div class="icon">
+            <div class="icon">
                 <div>
-                    <a href="./giohang.php" class="giohangcount"><i class="fa-solid fa-cart-shopping fa-xl">
+                    <Link to="cart" class="giohangcount"><i class="fa-solid fa-cart-shopping fa-xl">
                     </i>
                     <div class="count">
-                        <?php if(isset($_SESSION['cart'])) echo count($_SESSION['cart']);
-                        else echo "0";
-                        ?>
+                        0
                     </div>
-                    </a>
+                    </Link>
                 </div>
-                <div> <a href=""><i class="fa-solid fa-bell fa-xl"></i></a></div>
+                <div> <Link to="/"><i class="fa-solid fa-bell fa-xl"></i></Link></div>
                 <div class="user_dropdown">
-                    <?php echo $user ?>
+                    <Link to="/account" class='user'> Admin </Link>
                     <ul class="user_dropdown_content">
-                        <?php
-                        echo $userDropdown;
-                        ?>
+                        <li><Link to="/login">Đăng nhập</Link></li>
+                        <li><Link to="/register">Đăng ký</Link></li>
+                        <li><Link to="/accountInfo">Thông tin tài khoản</Link></li>
+                        <li><Link to="/history">Lịch sử mua hàng</Link></li>
+                        <li><Link to="/">Thoát</Link></li>
                     </ul>
                 </div>
-            </div> */}
+            </div>
         </nav>
     </div>
 </header>
