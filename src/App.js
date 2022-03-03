@@ -1,18 +1,17 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import NavBar from './component/NavBar/NavBar';
+import Demo from './component/Demo/Demo';
 
 
 
 const App = () => {
   return (
-    <BrowserRouter>
-        <NavBar/>
-        <Routes>
-          
-        </Routes>
-
-  </BrowserRouter>
+    <div>
+      asdasd
+      <Demo/>
+    </div>
+    
   )
 }
 
