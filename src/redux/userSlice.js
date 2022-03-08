@@ -5,15 +5,20 @@ import axios from "axios";
 // export const getUserListInfo = createAsyncThunk(
 //     'userInfo/getUserListInfo',
 //     async()=>{
-//         const {data} = await axios.get(`${API_URL}/users`) 
+//         const {data} = await axios.get(`${API_URL}/users`)
 //         return data;
 //     }
 // )
-
+let config = {
+   headers: {
+     "Content-Type": "application/json",
+     'Access-Control-Allow-Origin': '*',
+     }
+   }
 export const login = createAsyncThunk(
    'userInfo/login',
    async(value)=>{
-       const {data} = await axios.post(`${API_URL}/users`,value).catch(error => console.log(error))
+       const {data} = await axios.post(`${API_URL}/users/login`,value)
        return data;
    }
 )
@@ -24,6 +29,7 @@ export const userSlice = createSlice({
       userInfo: null,
       loading: null,
       status:null,
+      message:null
   },
   reducers:{
      logout:(state)=>{
@@ -41,8 +47,10 @@ export const userSlice = createSlice({
       state.userInfo = payload
       state.status = true
    },
-   [login.rejected](state){
+   [login.rejected](state,{payload}){
       state.loading = HTTP_STATUS.REJECTED
+      state.message = payload
+      
    }
   }
 })

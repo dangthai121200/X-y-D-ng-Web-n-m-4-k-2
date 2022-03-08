@@ -12,7 +12,8 @@ const FormLogin = () => {
     e.preventDefault()
     dispatch(login({username,password}))
   }  
-  const {name} = useSelector(state=>state.User.userInfo===null?'':state.User.userInfo)
+  const {name} = useSelector(state => state.User.userInfo === null?'':state.User.userInfo)
+  const message = useSelector(state => state.User.message === null?'':state.User.message)
     return (
       <div>
         <form onSubmit={(e)=>onSubmit(e)}>
@@ -22,6 +23,7 @@ const FormLogin = () => {
         </form>
      <button onClick={()=>dispatch(logout())}>Logout</button>
      <h2>{useSelector(state=>state.User.loading === HTTP_STATUS.REJECTED?"Sai tên đăng nhập hoặc mật khẩu":"")}</h2>
+     <h1>{message}</h1>
       </div>
     ) 
 }
