@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import imgLogo from "../../images/logo.png";
 
+function nav(){
+    const body = document.getElementsByTagName('body');
+    body[0].classList.toggle('open');
+  }
 
 const NavBar = () => {
 
@@ -11,7 +15,7 @@ const NavBar = () => {
         <path id="Path_18" data-name="Path 18" d="M0,962.463V841.023s488.623,70.127,982.994-8.552S1920,854.707,1920,854.707V962.463Z" transform="translate(1920 962.463) rotate(180)" fill="#a3e0ff" />
     </svg>
     <div class="container">
-        <i class="fa-solid fa-bars" id="navBtn"></i>
+        <i class="fa-solid fa-bars" id="navBtn" onClick={nav}></i>
         <nav class='nav' id="nav">
             <div class="logo">
                 <Link to="/">
