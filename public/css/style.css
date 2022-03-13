@@ -315,19 +315,6 @@ svg {
   height: auto;
 }
 
-/* Label */
-.label {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-.customer-logos {
-  background-image: linear-gradient(
-    to bottom,
-    var(--second-color),
-    white,
-    var(--third-color)
-  );
-}
-
 /* Slider */
 .slick-slide {
   margin: 0px 20px;
