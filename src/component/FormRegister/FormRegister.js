@@ -3,7 +3,7 @@ import image from "./signup-image.jpg";
 
 const FormRegister = () => {
   return (
-    <section className="signup">
+    <div className="signup">
             <div className="container">
                 <div className="signup-content">
                     <div className="signup-form">
@@ -40,7 +40,7 @@ const FormRegister = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
   )
 }
 
