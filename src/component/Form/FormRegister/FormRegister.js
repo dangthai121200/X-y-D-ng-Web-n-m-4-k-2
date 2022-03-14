@@ -1,6 +1,7 @@
 import React from 'react';
 import image from "./signup-image.jpg";
 
+
 const FormRegister = () => {
   return (
     <div className="signup">
