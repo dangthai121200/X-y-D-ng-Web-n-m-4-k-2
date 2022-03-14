@@ -39,7 +39,7 @@ const FormLogin = () => {
           <div className="signin-content">
               <div className="signin-image">
                   <figure><img src={image} alt="sing up image" /></figure>
-                  <p>Chưa có tài khoản ? <Link to="register">Tạo tài khoản mới</Link></p>
+                  <p>Chưa có tài khoản ? <Link to="/register">Tạo tài khoản mới</Link></p>
               </div>
 
               <div className="signin-form">
