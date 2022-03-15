@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 import {login} from "../../../redux/userSlice";
 import { HTTP_STATUS } from '../../../redux/constants';
 
-import image from "./signin-image.jpg";
 
+
+import image from "./signin-image.jpg";
+import "../cssForRegisterAndLogin/style.css"
+import "../fontsForRegisterAndLogin/material-icon/css/material-design-iconic-font.min.css"
 
 const FormLogin = () => {
 
@@ -35,7 +38,7 @@ const FormLogin = () => {
    
     return (
       <div className="sign-in">
-      <div className="container">
+      <div className="loginAndRegister">
           <div className="signin-content">
               <div className="signin-image">
                   <figure><img src={image} alt="sing up image" /></figure>
