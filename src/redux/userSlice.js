@@ -22,6 +22,13 @@ export const login = createAsyncThunk(
        return data;
    }
 )
+export const register = createAsyncThunk(
+   'userInfo/register',
+   async(value)=>{
+      const {data} = await axios.post(`${API_URL}v1/users/register`,value)
+      return data;
+   }
+)
 
 export const userSlice = createSlice({
   name:"user",
@@ -39,7 +46,7 @@ export const userSlice = createSlice({
      }
   },
   extraReducers:{
-   [login.pending](state){
+   [login.pending](state){                   //start login
       state.loading = HTTP_STATUS.PENDING
    },
    [login.fulfilled](state,{payload}){
@@ -51,7 +58,19 @@ export const userSlice = createSlice({
       state.loading = HTTP_STATUS.REJECTED
       state.message = payload
       
-   }
+   },                                         //end login
+   [register.pending](state){                     //start register
+      state.loading = HTTP_STATUS.PENDING
+   },
+   [register.fulfilled](state,{payload}){
+      state.loading = HTTP_STATUS.FULFILLED
+      state.userInfo = payload
+   },
+   [register.rejected](state,{payload}){
+      state.loading = HTTP_STATUS.REJECTED
+      state.message = payload
+      
+   }                                      //end register
   }
 })
 export const {logout} = userSlice.actions;
