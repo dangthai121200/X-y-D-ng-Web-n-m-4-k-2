@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import { API_URL,HTTP_STATUS } from '../../../redux/constants';
 import { register } from '../../../redux/userSlice';
 import { validEmail, validPassword,validUsername } from "../../../redux/constants";
+
+import "../cssForRegisterAndLogin/style.css"
+import "../fontsForRegisterAndLogin/material-icon/css/material-design-iconic-font.min.css"
 import image from "./signup-image.jpg";
 
 
@@ -80,7 +83,7 @@ const FormRegister = () => {
 
   return (
     <div className="signup">
-            <div className="container">
+            <div className="loginAndRegister">
                 <div className="signup-content">
                     <div className="signup-form">
                         <h2 className="form-title">Đăng ký</h2>
