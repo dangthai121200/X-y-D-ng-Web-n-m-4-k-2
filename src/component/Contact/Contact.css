@@ -1,0 +1,92 @@
+/* Contact */
+.contact--page {
+    height: 100vh;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5) !important;
+    margin: 5rem;
+  }
+  .contact {
+    background: url(../../images/contact.png) center no-repeat;
+    background-size: cover;
+    color: white;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.7);
+  }
+  .contact__content__header {
+    font-family: var(--secondary-font);
+    font-size: 4.9rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  .contact__content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .content__header {
+    max-width: 36rem;
+    font-family: var(--main-font);
+    font-size: 2.1rem;
+    font-weight: bold;
+    margin-bottom: 2.8rem;
+  }
+  .container__contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contact__description {
+    max-width: 40.4rem;
+    font-family: var(--main-font);
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+  .contact__description i {
+    margin-right: 2rem;
+  }
+  .contact__description--location {
+    max-width: 48.9rem;
+  }
+  .contact__description--request {
+    font-size: 1.4rem;
+  }
+  .content__form {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 36.1rem;
+  }
+  .content__form input[type="text"] {
+    width: 100%;
+    margin-bottom: 1.6rem;
+    background-color: var(--showcase-color);
+    border: none;
+    height: 4rem;
+    padding-left: 1rem;
+    border-radius: 0.5rem;
+  }
+  .content__form textarea {
+    width: 100%;
+    margin-bottom: 1.6rem;
+    background-color: var(--showcase-color);
+    border: none;
+    height: 9.6rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    border-radius: 0.5rem;
+  }
+  .content__form .contact__button {
+    width: 100%;
+    height: 4rem;
+    color: white;
+    background-color: var(--btn-color);
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    border: none;
+    transition: all 0.3s;
+  }
+  .contact__button:hover {
+    background-color: black;
+  }

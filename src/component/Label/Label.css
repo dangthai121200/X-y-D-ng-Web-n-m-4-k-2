@@ -1,0 +1,66 @@
+/* Label */
+.label {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slider {
+  background: linear-gradient(to bottom, #ffbdc3, #f0faff, #a3e0ff);
+  height: 302px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.slider::before,
+.slider::after {
+
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  content: "";
+  height: 302px;
+  position: absolute;
+  width: 100px;
+  z-index: 2;
+}
+.slider::after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+.slider::before {
+  left: 0;
+  top: 0;
+}
+
+.slider .slide-track {
+  display: flex;
+  justify-content: space-between;
+  width: calc(200px * 5);
+  animation: scroll 30s linear infinite;
+}
+.slider .slide {
+  height: 100px;
+  width: 200px;
+  margin-right:50px;
+}
+
+.slider .slide:last-child {
+    margin-right:0px;
+  }
+
+@keyframes scroll {
+  0% {
+    transform: translateX(calc(250px * 5));
+  }
+  100% {
+    transform: translateX(calc(-250px * 5));
+  }
+}
