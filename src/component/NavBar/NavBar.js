@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../../redux/userSlice';
 import imgLogo from "./logo.png";
 
 function nav(){
@@ -8,6 +11,14 @@ function nav(){
   }
 
 const NavBar = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+
+    const onLogout = () =>{    
+        dispatch(logout()) 
+        navigate("/")   
+    }
 
   return (
     <header>
@@ -46,14 +57,28 @@ const NavBar = () => {
                     </Link>
                 </div>
                 <div> <Link to="/"><i className="fa-solid fa-bell fa-xl"></i></Link></div>
-                <div className="user_dropdown">
-                    <Link to="/account" className='user'> Admin </Link>
+                <div className="user_dropdown">                    
+                    {
+                      useSelector(state=>state.User.status === true ? 
+                        <Link to="/account" className='user'>{state.User.userInfo.username}</Link>
+                        :
+                        <div className='user'>Đăng nhập</div>)
+                    }                 
                     <ul className="user_dropdown_content">
-                        <li><Link to="/login">Đăng nhập</Link></li>
-                        <li><Link to="/register">Đăng ký</Link></li>
-                        <li><Link to="/accountInfo">Thông tin tài khoản</Link></li>
-                        <li><Link to="/history">Lịch sử mua hàng</Link></li>
-                        <li><Link to="/">Thoát</Link></li>
+
+                        {
+                        useSelector(state=>state.User.status === true?
+                        <React.Fragment>
+                            <li><Link to="/accountInfo">Thông tin tài khoản</Link></li>
+                            <li><Link to="/history">Lịch sử mua hàng</Link></li>
+                            <li><a onClick={onLogout} type="button">Thoát</a></li>
+                        </React.Fragment>
+                        :
+                        <React.Fragment>
+                            <li><Link to="/login">Đăng nhập</Link></li>
+                            <li><Link to="/register">Đăng ký</Link></li>
+                        </React.Fragment>)
+                        }
                     </ul>
                 </div>
             </div>

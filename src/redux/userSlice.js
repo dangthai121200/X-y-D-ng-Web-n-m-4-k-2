@@ -22,6 +22,7 @@ export const login = createAsyncThunk(
        return data;
    }
 )
+
 export const register = createAsyncThunk(
    'userInfo/register',
    async(value)=>{
@@ -65,6 +66,7 @@ export const userSlice = createSlice({
    [register.fulfilled](state,{payload}){
       state.loading = HTTP_STATUS.FULFILLED
       state.userInfo = payload
+      state.status = true
    },
    [register.rejected](state,{payload}){
       state.loading = HTTP_STATUS.REJECTED
