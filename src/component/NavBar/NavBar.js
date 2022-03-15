@@ -32,7 +32,7 @@ const NavBar = () => {
                 <li>
                     <Link to="Accessory">Phụ kiện</Link>
                 </li>
-                <li><Link to="Envent">Sự kiện</Link></li>
+                <li><Link to="Event">Sự kiện</Link></li>
                 <li><Link to="Contact">Liên hệ</Link></li>
                 <li><Link to="Aboutus">Về chúng tôi</Link></li>
             </ul>

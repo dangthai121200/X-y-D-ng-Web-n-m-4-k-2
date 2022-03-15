@@ -1,0 +1,40 @@
+/* Subsection 1 */
+.subsection__title {
+    font-family: var(--secondary-font);
+    font-size: 6rem;
+    color: var(--first-color);
+  }
+  .subsection__title2 {
+    color: var(--second-color);
+  }
+  .subsection__title3 {
+    color: var(--third-color);
+  }
+  .sub1 {
+    background: url(../../images/workspace.jpg) center no-repeat;
+    background-size: cover;
+    height: 41.6rem;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+  }
+  .sub2 {
+    background: url(../../images/gamingspace.jpg) center no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+  }
+  .sub3 {
+    background: url(../../images/luxuriesspace.jpg) center no-repeat;
+    background-size: cover;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.5);
+  }
+  
+  .overplay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .container__subsection {
+    height: 100%;
+  }
