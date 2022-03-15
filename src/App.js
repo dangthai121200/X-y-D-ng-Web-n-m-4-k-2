@@ -10,6 +10,8 @@ import Phukien from './pages/Phukien';
 import Events from './pages/Events';
 import ContactPage from './pages/Contact';
 import About from './pages/About';
+import Cart from './pages/Cart';
+import Pay from './pages/Pay';
 
 
 const App = () => {
@@ -26,8 +28,9 @@ const App = () => {
       <Route exact path='/Event' element={<Events/>}/>
       <Route exact path='/Contact' element={<ContactPage/>}/>
       <Route exact path='/Aboutus' element={<About/>}/>
+      <Route exact path='/Cart' element={<Cart/>}/>
+      <Route exact path='/Pay' element={<Pay/>}/>
       </Routes>
-
     </BrowserRouter>
   )
 }
