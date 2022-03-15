@@ -1,9 +1,10 @@
 import React from "react";
-import './Contact.css'
+import './Contact.css';
+import Map from '../Map/Map';
 
-export default function Contact() {
+export default function Contact2() {
   return (
-    <section className="contact">
+    <section className="contact contact--page">
       <div className="container container__contact">
         <h1 className="contact__content__header animate-top">Contact us</h1>
         <div className="contact__content animate-left">
@@ -41,8 +42,9 @@ export default function Contact() {
             ></textarea>
             <button className="contact__button">Submit</button>
           </div>
-        </div>
+        </div>  
       </div>
+      <Map/>
     </section>
   );
 }

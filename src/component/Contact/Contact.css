@@ -27,6 +27,7 @@
     font-size: 2.1rem;
     font-weight: bold;
     margin-bottom: 2.8rem;
+    color: white;
   }
   .container__contact {
     display: flex;
@@ -39,6 +40,7 @@
     font-family: var(--main-font);
     font-size: 1.6rem;
     margin-bottom: 2rem;
+    color:white;
   }
   .contact__description i {
     margin-right: 2rem;

@@ -6,9 +6,10 @@ import PageLogin from './component/Page/PageLogin/PageLogin';
 import PageRegister from './component/Page/PageRegister/PageRegister';
 import Home from './pages/Home';
 import Laptop from './pages/Laptop';
-import Phukien from './pages/Phukien'
-import Events from './pages/Events'
-
+import Phukien from './pages/Phukien';
+import Events from './pages/Events';
+import ContactPage from './pages/Contact';
+import About from './pages/About';
 
 
 const App = () => {
@@ -23,6 +24,8 @@ const App = () => {
       <Route exact path='/Laptop' element={<Laptop/>}/>
       <Route exact path='/Accessory' element={<Phukien/>}/>
       <Route exact path='/Event' element={<Events/>}/>
+      <Route exact path='/Contact' element={<ContactPage/>}/>
+      <Route exact path='/Aboutus' element={<About/>}/>
       </Routes>
 
     </BrowserRouter>

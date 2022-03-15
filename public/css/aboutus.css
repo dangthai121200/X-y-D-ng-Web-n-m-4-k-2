@@ -15,8 +15,14 @@
 .history{
     margin-bottom: 5rem !important;
 }
+
+.team{
+    margin-bottom: 10rem;
+}
+
 .team img{
     max-width:20rem;
+    border-radius: 50%;
 }
 .team .heading{
     margin-top:10rem;
