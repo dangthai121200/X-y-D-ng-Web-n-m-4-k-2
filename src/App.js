@@ -1,23 +1,53 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import NavBar from './component/NavBar/NavBar';
 import { useSelector } from 'react-redux';
-import PageLogin from './component/Page/PageLogin/PageLogin';
-import PageRegister from './component/Page/PageRegister/PageRegister';
+import Admin from './admin/components/admin';
+import AdminNavbar from './admin/components/adminnav';
+// import AdminLogin from './admin/components/loginadmin';
+import ManageBill from './admin/components/quanlydonhang';
+import ManageFeedback from './admin/components/quanlyfeedback';
+import ManageCus from './admin/components/quanlykhachhang';
+import ManageSale from './admin/components/quanlykhuyenmai';
+import ManageStaff from './admin/components/quanlynhanvien';
+import ManageProduct from './admin/components/quanlysanpham';
+import AddAccessories from './admin/components/addaccessories';
+import AddProduct from './admin/components/addproduct';
+import AddSale from './admin/components/addKhuyenmai';
+import AddAdmin from './admin/components/addAdmin';
+import Music from './admin/components/music';
 
 
 
 const App = () => {
+  // function Navbar() {
+  //   const url = window.location.pathname;
+  //   if (url!=="/") {
+  //     return <AdminNavbar />;
+  //   }
+  //   return false;
+  // }
+  
   const userInfo = useSelector(state=>state.User.userInfo)
+  
   return (
 
-  <BrowserRouter>
-  <NavBar/>
+  <BrowserRouter>  
+  <AdminNavbar/>
   <Routes>
-    <Route path='login' element = { <PageLogin/>} />
-    <Route path='register' element = { <PageRegister/>} />
+    {/* <Route path='/' element = { <AdminLogin/>} /> */}
+    <Route path='/' element = { <Admin/>} />
+    <Route path='/addaccessories' element = { <AddAccessories/>} />
+    <Route path='/addproduct' element = { <AddProduct/>} />
+    <Route path='/addadmin' element = { <AddAdmin/>} />
+    <Route path='/addsale' element = { <AddSale/>} />
+    <Route path='/managebill' element = { <ManageBill/>} />
+    <Route path='/managefeedback' element = { <ManageFeedback/>} />
+    <Route path='/managecus' element = { <ManageCus/>} />
+    <Route path='/managesale' element = { <ManageSale/>} />
+    <Route path='/managestaff' element = { <ManageStaff/>} />
+    <Route path='/manageproduct' element = { <ManageProduct/>} />
   </Routes>
-
+  <Music/>
   </BrowserRouter>
   )
 }
