@@ -21,7 +21,7 @@ import Music from './admin/components/music';
 const App = () => {
   function Navbar() {
     const url = window.location.pathname;
-    if (url !== "/login") {
+    if (url !== "/") {
       return <AdminNavbar />;
     }
     return false;
@@ -29,7 +29,7 @@ const App = () => {
 
   function BMusic() {
     const url = window.location.pathname;
-    if (url !== "/login") {
+    if (url !== "/") {
       return <Music/>;
     }
     return false;
@@ -42,8 +42,8 @@ const App = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path='/login' element={<AdminLogin />} />
-        <Route path='/' element={<Admin />} />
+        <Route path='/' element={<AdminLogin />} />
+        <Route path='/admin' element={<Admin />} />
         <Route path='/addaccessories' element={<AddAccessories />} />
         <Route path='/addproduct' element={<AddProduct />} />
         <Route path='/addadmin' element={<AddAdmin />} />

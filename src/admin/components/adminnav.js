@@ -23,7 +23,7 @@ export default function adminNavbar() {
     return (
         <header>
             <nav className="nav" id="nav">
-                <Link to="/" className="logo">
+                <Link to="/admin" className="logo">
                     <img src={imgLogo} alt="logo" />
                 </Link>
                 <div className="clock">
@@ -38,7 +38,7 @@ export default function adminNavbar() {
                 <div className="ul">
                     <ul className="nav-list">
                         <li className="nav-item">
-                            <Link to="/">
+                            <Link to="/admin">
                                 TỔNG QUAN
                             </Link>
                         </li>
@@ -133,7 +133,7 @@ export default function adminNavbar() {
                 </div>
                 {/* <form action="../controller/logoutController.php"> */}
                 <div className="Exit">
-                    <a href="/login"><button name="dangxuat" className="btnExit"> ĐĂNG XUẤT</button></a>
+                    <a href="/"><button name="dangxuat" className="btnExit"> ĐĂNG XUẤT</button></a>
                     </div>
                 {/* </form> */}
             </nav>
