@@ -10,10 +10,26 @@
 import React from "react";
 
 export default function chitietdonhang(){
+    function  btnNavmenu(){        
+        const nav = document.getElementById("nav");
+        const header = document.getElementsByTagName("header");
+        const section = document.getElementsByTagName("section");
+ 
+     if(nav.style.transform=="translateX(-100%)" && header[0].style.width=="0%" && section[0].style.width=="80%"){
+         nav.style.transform="translateX(0)";
+         header[0].style.width="20%";
+         section[0].style.width="60%";
+     }
+     else{
+         nav.style.transform="translateX(-100%)";
+         header[0].style.width="0%";
+         section[0].style.width="80%";
+     }   
+ }
     return(
 <section>
     <div class="container d-flex flex-column justify-content-around">
-        <div class="btnNav" id="btnNav">
+        <div class="btnNav" id="btnNav" onClick={btnNavmenu}>
             <i class="fa-solid fa-bars"></i>
         </div>
         <div class="text-center mb-5">

@@ -132,7 +132,9 @@ export default function adminNavbar() {
                     </ul>
                 </div>
                 {/* <form action="../controller/logoutController.php"> */}
-                <div className="Exit"><button name="dangxuat" className="btnExit"> ĐĂNG XUẤT</button></div>
+                <div className="Exit">
+                    <a href="/login"><button name="dangxuat" className="btnExit"> ĐĂNG XUẤT</button></a>
+                    </div>
                 {/* </form> */}
             </nav>
 

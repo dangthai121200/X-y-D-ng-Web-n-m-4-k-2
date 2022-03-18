@@ -88,8 +88,7 @@ export default function admin(){
         </div>
         <div className="income row text-center mt-5">
             <h2 className="count__title">TỔNG DOANH THU</h2>
-            <div className="soluong soluong--doanhthu">
-                5 chăm chiệu :>
+            <div className="soluong soluong--doanhthu">                
                 {/* <?php
                 if (!empty($doanhThu['doanhthu']))
                     echo number_format($doanhThu['doanhthu'],0,",",".")." VND";

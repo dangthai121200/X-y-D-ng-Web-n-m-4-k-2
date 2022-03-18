@@ -1,0 +1,72 @@
+.main {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding: auto;
+  width: 100%;
+  height: 100vh;
+  padding: 100px 0;
+  background-image: url("https://source.unsplash.com/collection/261936");
+  background-size: cover;
+}
+.sub-main {
+  display: flex;
+  justify-content: center;
+  height: 550px;
+  width: 35%;
+  box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+  padding-top: 30px;
+  border-radius: 60px;
+  background-color: white;
+}
+.imgs {
+  padding-top: 20px;
+  justify-content: center;
+  display: flex;
+}
+.container-image {    
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;  
+}
+.profile {
+  height: 100px;
+  width: 100px;
+  border-radius: 130px;
+}
+
+input {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 25px 0px #cdcdcd;
+  border: none;
+  outline: none;
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  padding: 14px 0 0 25px;
+}
+
+.name {
+  font-size: 20px;
+}
+.second-input {
+  padding-top: 20px;
+}
+
+.login-button {
+  margin-top: 25px;
+  border: 0;
+  width: 110px;
+  height: 40px;
+  border-radius: 15px ;
+  background-color: rgb(146, 246, 250);
+  text-align: center;
+  font-weight: bold;
+  font-size:20px;
+}
+

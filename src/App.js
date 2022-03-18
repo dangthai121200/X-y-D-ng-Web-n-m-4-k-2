@@ -1,9 +1,9 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import Admin from './admin/components/admin';
 import AdminNavbar from './admin/components/adminnav';
-// import AdminLogin from './admin/components/loginadmin';
+import AdminLogin from './admin/components/loginadmin';
 import ManageBill from './admin/components/quanlydonhang';
 import ManageFeedback from './admin/components/quanlyfeedback';
 import ManageCus from './admin/components/quanlykhachhang';
@@ -19,36 +19,44 @@ import Music from './admin/components/music';
 
 
 const App = () => {
-  // function Navbar() {
-  //   const url = window.location.pathname;
-  //   if (url!=="/") {
-  //     return <AdminNavbar />;
-  //   }
-  //   return false;
-  // }
-  
-  const userInfo = useSelector(state=>state.User.userInfo)
-  
+  function Navbar() {
+    const url = window.location.pathname;
+    if (url !== "/login") {
+      return <AdminNavbar />;
+    }
+    return false;
+  }
+
+  function BMusic() {
+    const url = window.location.pathname;
+    if (url !== "/login") {
+      return <Music/>;
+    }
+    return false;
+  }
+
+  const userInfo = useSelector(state => state.User.userInfo)
+
   return (
 
-  <BrowserRouter>  
-  <AdminNavbar/>
-  <Routes>
-    {/* <Route path='/' element = { <AdminLogin/>} /> */}
-    <Route path='/' element = { <Admin/>} />
-    <Route path='/addaccessories' element = { <AddAccessories/>} />
-    <Route path='/addproduct' element = { <AddProduct/>} />
-    <Route path='/addadmin' element = { <AddAdmin/>} />
-    <Route path='/addsale' element = { <AddSale/>} />
-    <Route path='/managebill' element = { <ManageBill/>} />
-    <Route path='/managefeedback' element = { <ManageFeedback/>} />
-    <Route path='/managecus' element = { <ManageCus/>} />
-    <Route path='/managesale' element = { <ManageSale/>} />
-    <Route path='/managestaff' element = { <ManageStaff/>} />
-    <Route path='/manageproduct' element = { <ManageProduct/>} />
-  </Routes>
-  <Music/>
-  </BrowserRouter>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/login' element={<AdminLogin />} />
+        <Route path='/' element={<Admin />} />
+        <Route path='/addaccessories' element={<AddAccessories />} />
+        <Route path='/addproduct' element={<AddProduct />} />
+        <Route path='/addadmin' element={<AddAdmin />} />
+        <Route path='/addsale' element={<AddSale />} />
+        <Route path='/managebill' element={<ManageBill />} />
+        <Route path='/managefeedback' element={<ManageFeedback />} />
+        <Route path='/managecus' element={<ManageCus />} />
+        <Route path='/managesale' element={<ManageSale />} />
+        <Route path='/managestaff' element={<ManageStaff />} />
+        <Route path='/manageproduct' element={<ManageProduct />} />
+      </Routes>
+      <BMusic />
+    </BrowserRouter>
   )
 }
 
