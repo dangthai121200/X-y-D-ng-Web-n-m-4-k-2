@@ -42,7 +42,7 @@ export default function adminLogin() {
           </div>
           <div>
             {/* <form class="form-signin" method="POST" action="../controller/loginAdminController.php"> */}
-            <form>
+            <form action="/admin" netlify>
               <div>
                 <i className="icon fa-solid fa-user"></i>
                 <input type="text" name="username" class="name" placeholder="Admin" required />
@@ -50,10 +50,8 @@ export default function adminLogin() {
               <div className="second-input">
                 <i className="icon fa-solid fa-key"></i>
                 <input type="password" name="password" class="name" placeholder="Password" required />
-              </div>
-              <a href ="/admin">
+              </div>                                  
               <button class="login-button" name="action" value="login" type="submit">LOGIN</button>
-              </a>
             </form>
           </div>
         </div>
