@@ -51,9 +51,9 @@ export default function adminLogin() {
                 <i className="icon fa-solid fa-key"></i>
                 <input type="password" name="password" class="name" placeholder="Password" required />
               </div>
-              <Link to ="/admin">
+              <a href ="/admin">
               <button class="login-button" name="action" value="login" type="submit">LOGIN</button>
-              </Link>
+              </a>
             </form>
           </div>
         </div>
