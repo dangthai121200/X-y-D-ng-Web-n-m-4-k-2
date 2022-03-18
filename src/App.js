@@ -12,7 +12,8 @@ import ContactPage from './pages/Contact';
 import About from './pages/About';
 import Cart from './pages/Cart';
 import Pay from './pages/Pay';
-
+// import AccountInfo from './pages/AccountInfo';
+// import AddFeedBack from './pages/AddFeedBack';
 
 const App = () => {
   const userInfo = useSelector(state=>state.User.userInfo)
