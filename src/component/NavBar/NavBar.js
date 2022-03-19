@@ -7,7 +7,7 @@ import imgLogo from "./logo.png";
 
 function nav(){
     const body = document.getElementsByTagName('body');
-    body[0].classList.toggle('open');
+    body[0].classNameList.toggle('open');
   }
 
 const NavBar = () => {
@@ -25,10 +25,10 @@ const NavBar = () => {
     <svg className="header-svg" xmlns="http://www.w3.org/2000/svg" width="1920" height="160" viewBox="0 0 1920 160">
         <path id="Path_18" data-name="Path 18" d="M0,962.463V841.023s488.623,70.127,982.994-8.552S1920,854.707,1920,854.707V962.463Z" transform="translate(1920 962.463) rotate(180)" fill="#a3e0ff" />
     </svg>
-    <div class="container">
-        <i class="fa-solid fa-bars" id="navBtn" onClick={nav}></i>
-        <nav class='nav' id="nav">
-            <div class="logo">
+    <div className="container">
+        <i className="fa-solid fa-bars" id="navBtn" onClick={nav}></i>
+        <nav className='nav' id="nav">
+            <div className="logo">
                 <Link to="/">
                     <img src={imgLogo} alt="logo" />
                 </Link>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import Hero from "../component/Hero/Hero";
 import Categories from "../component/Categories/Categories";
 import Label from "../component/Label/Label";
@@ -8,8 +8,23 @@ import SwiperShowCase from "../component/Swiper/SwiperShowCase";
 import Contact from "../component/Contact/Contact";
 import Map from "../component/Map/Map"
 import Footer from "../component/Footer/Footer"
+import axios from 'axios'
 
 export default function Home() {
+
+  const [listLaptop,setListLapTop] = useState(null);
+
+  useEffect(()=>{
+      getListLaptop();
+      console.log(listLaptop);
+  },[])
+
+
+  const getListLaptop = async () =>{
+      const {data} = await axios.get("https://laptopso1vn.herokuapp.com/v1/categoryLaptop?fbclid=IwAR1HbtVBvkQZGd6PjDar_ktt7MxtRYTJVaqcicF2K2Dz2quSyrOBm4z7wrQ")
+      setListLapTop(data)
+  }
+
   return (
     <div>
       <Hero />
