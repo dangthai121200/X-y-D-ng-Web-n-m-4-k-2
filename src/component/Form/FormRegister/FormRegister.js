@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+
 import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useForm } from "react-hook-form";
+import { ErrorMessage } from '@hookform/error-message';
 
 import { API_URL,HTTP_STATUS } from '../../../redux/constants';
-import { register } from '../../../redux/userSlice';
+import { registerUser } from '../../../redux/userSlice';
 import { validEmail, validPassword,validUsername } from "../../../redux/constants";
 
 import "../cssForRegisterAndLogin/style.css"
@@ -17,69 +23,66 @@ import image from "./signup-image.jpg";
 const FormRegister = () => {
 
     const dispatch = useDispatch();
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
-    const [email,setEmail] = useState("");
-    const [username,setUsername] = useState("");
-    const [password,setPassword] = useState("");
-    const [confiPassword,setConfiPassowrd] = useState("");
+    const [checkEmail,setCheckEmail] = useState(null)
+    const [checkUsername,setCheckUsername] = useState(null)
 
+    const { register, handleSubmit, getValues ,setError, formState: { errors, isSubmitting } } = useForm();
 
-    const [emailErr, setEmailErr] = useState(false);
-    const [pwdError, setPwdError] = useState(false);
-    const [confiPasswordErr,setConfiPassowrderr] = useState(false);
-    const [usernameErr,setUsernameErr] = useState(false);
-    const [checkUsername,setCheckUsername] = useState(false);
-    const [checkEmail,setCheckMail] = useState(false);
-    const [firstSubmit,setFirstSubmit] = useState(true);
-
-
-    const OnRegister=(e)=>{
-        e.preventDefault();
-        validate();
-        if(emailErr === false && pwdError === false && confiPasswordErr === false && usernameErr === false && firstSubmit === false){
-            dispatch(register({email,username,password,confiPassword}))
-        }else{
-            setFirstSubmit(false)
-           return 
+    useEffect(()=>{
+        if(checkEmail == false && checkUsername == false){
+            dispatch(registerUser(getValues()))           
         }
-
-    };
-
-    // const checkExist=()=>{
-    //     const  checkEmail = await axios.get(`${API_URL}v1/users/checkEmail/` + email).then;
-    //     const  {data} = await axios.get(`${API_URL}v1/users/checkEmail/` + email);
-    // }
-    const validate = () =>{
-
-        if(!validEmail.test(email)){
-            setEmailErr(true)     
-        }else{
-            setEmailErr(false)     
-        }
-
-        if(!validPassword.test(password)){
-            setPwdError(true)     
-        }else{
-            setPwdError(false)     
-        }
-
-        if(!validUsername.test(username)){
-            setUsernameErr(true)     
-        }else{
-            setUsernameErr(false) 
-        }
-
-        if(confiPassword === password){
-            setConfiPassowrderr(false);   
-        }else{
-            setConfiPassowrderr(true);
-        }
-     
-    }
+    },[checkEmail,checkUsername])
 
     useSelector(state=>state.User.loading === HTTP_STATUS.FULFILLED ? navigate("/"):'')
-   
+
+    const OnCheckRegister=()=>{
+        checkExistEmail();
+        checkExistUsername();
+    };
+
+    const checkExistEmail = async () =>{
+        const  {data} = await axios.get(`${API_URL}v1/users/checkEmail/${getValues("email")}`).catch(error => {
+            setError("email", {
+                type: "manual",
+                message: error.message,
+              });   
+          });
+
+        if(data == true){
+            setError("email", {
+                type: "manual",
+                message: "Email đã tồn tại",
+              });     
+              setCheckEmail(true)       
+        }
+
+        if(data == false){
+            setCheckEmail(false)   
+        }
+    }
+
+    const checkExistUsername = async () =>{
+        const  {data} = await axios.get(`${API_URL}v1/users/checkUsername/${getValues("username")}`).catch(error => {
+            setError("username", {
+                type: "manual",
+                message: error.message,
+              });   
+          });
+
+        if(data == true){
+            setError("username", {
+                type: "manual",
+                message: "Username đã tồn tại",
+              });   
+              setCheckUsername(true);         
+        }
+        if(data == false){
+            setCheckUsername(false);   
+        }
+    }
 
   return (
     <div className="signup">
@@ -87,48 +90,76 @@ const FormRegister = () => {
                 <div className="signup-content">
                     <div className="signup-form">
                         <h2 className="form-title">Đăng ký</h2>
-                        <form onSubmit={e=>OnRegister(e)} className="register-form" id="register-form">
+                        <form onSubmit={handleSubmit(OnCheckRegister)} className="register-form" id="register-form">
                             <div className="form-group">
                                 <label htmlFor="email"><i className="zmdi zmdi-email"></i></label>
-                                <input type="text" name="username" id="username" placeholder="Email"  
-                                         value={email}
-                                         onChange={(e) => setEmail(e.target.value)}/>
-                                {emailErr && <p style={{color:"red"}}>Vui lòng nhập đúng email</p>}
+
+                                <input type="text" name="email" id="email" placeholder="Email"  
+                                        {...register("email", {
+                                            required:'Không để trống',
+                                            pattern: {
+                                                value: validEmail,
+                                                message: 'Email không phù hợp'
+                                            },
+                                        })}                                         
+                                />
+                                <ErrorMessage errors={errors} name="email" render={({ message }) => <p style={{color:'red'}}>{message}</p>}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="email"><i className="zmdi zmdi-account"></i></label>
-                                <input type="text" name="email" id="email" placeholder="Tên đăng nhập" 
-                                 value={username}
-                                 onChange={(e) => setUsername(e.target.value)}/>
-                                  {usernameErr && <p style={{color:"red"}}>Vui không để trống và không nhập kí tự đặc biệt</p>}
+                                <input type="text" name="username" id="username" placeholder="Tên đăng nhập" 
+                                  {...register("username", {
+                                    required: 'Không để trống', 
+                                    pattern: {
+                                        value: validUsername,
+                                        message: 'Username không phù hợp'
+                                    },
+                                })}                                     
+                                 />
+                                <ErrorMessage errors={errors} name="username" render={({ message }) => <p style={{color:'red'}}>{message}</p>}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="pass"><i className="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Mật Khẩu" 
-                                 value={password}
-                                 onChange={(e) => setPassword(e.target.value)}/>
-                                {pwdError && <p style={{color:"red"}}>Tối thiểu tám ký tự, ít nhất một ký tự hoa, một ký tự viết thường, một số và một ký tự đặc biệt</p>}
+                                <input type="password" name="pass" id="pass" placeholder="Mật Khẩu"
+                                {...register("password", {
+                                    required: 'Không để trống', 
+                                    pattern: {
+                                        value: validPassword,
+                                        message: 'Ít nhất 1 chữ hoa, số và kí tự đặc biệt'
+                                    },
+                                })}
+                                />
+                                <ErrorMessage errors={errors} name="password" render={({ message }) => <p style={{color:'red'}}>{message}</p>}/>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="re-pass"><i className="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="re_pass" id="re_pass" placeholder="Nhập lại mật khẩu"
-                                 value={confiPassword}
-                                 onChange={(e) => setConfiPassowrd(e.target.value)}                               
+                                {...register("confiPassword", {
+                                    required:'Không để trống', 
+                                    validate:{
+                                        positive: v => v === getValues("password") || 'Mật khẩu không giống nhau'                                    
+                                    }
+                                    })}                     
                                 />
-                                {confiPasswordErr && <p style={{color:"red"}}>Mật khẩu không giống nhau</p>}
+                                 <ErrorMessage errors={errors} name="confiPassword" render={({ message }) => <p style={{color:'red'}}>{message}</p>}/>
                             </div>
                             <div className="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" className="agree-term"/>
+                                <input type="checkbox" name="agree-term" id="agree-term" className="agree-term"
+                                {...register("checkbox",{
+                                    required:'Vui lòng tích vào ô để xác nhận', 
+                                })}
+                                />
                                 <label htmlFor="agree-term" className="label-agree-term"><span><span></span></span>Tôi đồng ý với chính sách bảo mật </label>
+                                <ErrorMessage errors={errors} name="checkbox" render={({ message }) => <p style={{color:'red'}}>{message}</p>}/>
                             </div>
                             <div className="form-group form-button">
-                                <input type="submit" name="signup" id="signup" className="form-submit" value="Đăng ký"/>
-                                  {/* spinner */}
-                            {useSelector(state=>state.User.loading === HTTP_STATUS.PENDING ? 
+                            <input disabled={isSubmitting} type="submit" name="signup" id="signup" className="form-submit" value="Đăng ký" />
+                             {/* spinner */}
+                            { isSubmitting ? 
                                 <button className="btn btn-primary">
-                                <span className="spinner-border spinner-border-sm"></span>
-                                 Loading..
-                            </button> :'')}
+                                    <span className="spinner-border spinner-border-sm"></span>
+                                    Loading..
+                                </button> :''}
                            {/* end spinner */}
                             </div>
                         </form>
@@ -141,6 +172,32 @@ const FormRegister = () => {
             </div>
         </div>
   )
+
+
+// const { register, handleSubmit, setError, formState: { errors } } = useForm();
+// const onSubmit = (data) =>{
+//     console.log(data)
+// }
+//         return (
+//             <div>
+//                 <form onSubmit={handleSubmit(onSubmit)}>
+//                 <input {...register("username", { 
+//                    pattern: {
+//                     value: validUsername,
+//                     message: 'Tên không phù hợp' // JS only: <p>error message</p> TS only support string
+//                   },
+//                     })}/>
+//                 <ErrorMessage
+//                     errors={errors}
+//                     name="username"
+//                     render={({ message }) => <p>{message}</p>}
+//                 />
+
+//                     <input type="submit" value="ok"/>
+//                 </form>
+               
+//             </div>
+//         )
 }
 
 export default FormRegister

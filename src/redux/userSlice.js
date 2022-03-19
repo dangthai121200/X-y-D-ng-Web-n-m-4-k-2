@@ -15,16 +15,18 @@ let config = {
      'Access-Control-Allow-Origin': '*',
      }
    }
+
+
 export const login = createAsyncThunk(
-   'userInfo/login',
+   'user/login',
    async(value)=>{
        const {data} = await axios.post(`${API_URL}v1/users/login`,value)
        return data;
    }
 )
 
-export const register = createAsyncThunk(
-   'userInfo/register',
+export const registerUser = createAsyncThunk(
+   'user/registerUser',
    async(value)=>{
       const {data} = await axios.post(`${API_URL}v1/users/register`,value)
       return data;
@@ -60,15 +62,15 @@ export const userSlice = createSlice({
       state.message = payload
       
    },                                         //end login
-   [register.pending](state){                     //start register
+   [registerUser.pending](state){                     //start register
       state.loading = HTTP_STATUS.PENDING
    },
-   [register.fulfilled](state,{payload}){
+   [registerUser.fulfilled](state,{payload}){
       state.loading = HTTP_STATUS.FULFILLED
       state.userInfo = payload
       state.status = true
    },
-   [register.rejected](state,{payload}){
+   [registerUser.rejected](state,{payload}){
       state.loading = HTTP_STATUS.REJECTED
       state.message = payload
       
