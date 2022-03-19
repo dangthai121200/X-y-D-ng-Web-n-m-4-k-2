@@ -14,6 +14,8 @@ import Cart from './pages/Cart';
 import Pay from './pages/Pay';
 // import AccountInfo from './pages/AccountInfo';
 // import AddFeedBack from './pages/AddFeedBack';
+// import PurchaseHistory from './pages/PurchaseHistory';
+// import OrderDetail from './pages/OrderDetail';
 
 const App = () => {
   const userInfo = useSelector(state=>state.User.userInfo)
@@ -30,7 +32,7 @@ const App = () => {
       <Route exact path='/Contact' element={<ContactPage/>}/>
       <Route exact path='/Aboutus' element={<About/>}/>
       <Route exact path='/Cart' element={<Cart/>}/>
-      <Route exact path='/Pay' element={<Pay/>}/>
+
       </Routes>
     </BrowserRouter>
   )
