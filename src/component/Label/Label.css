@@ -3,6 +3,11 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+.slide{
+  display: flex;
+  align-items: center;
+}
+
 .slider {
   background: linear-gradient(to bottom, #ffbdc3, #f0faff, #a3e0ff);
   height: 302px;
