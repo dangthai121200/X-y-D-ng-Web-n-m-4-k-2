@@ -41,32 +41,32 @@ export default function chitietdonhang(){
                 <table class="table .table-striped" style={{border: "0"}}>
                 <tr>
                         <th>Mã đơn:</th>
-                        <input class="form-control" id="editth" type="text" hidden name="madon" value="<?php echo $history['madon'];?>"/>
-                        <th><input class="form-control" id="editth" type="text" disabled name="ma" value="<?php echo $history['madon'];?>"/></th>
+                        <input class="form-control" id="editth" type="text" hidden name="madon" value=""/>
+                        <th><input class="form-control" id="editth" type="text" disabled name="ma" value=""/></th>
                     </tr>
                     <tr>
                         <th>Người nhận:</th>
-                        <th><input class="form-control" type="text" id="editth" name="nguoinhan" value="<?php echo $history['nguoinhan'];?>"/></th>
+                        <th><input class="form-control" type="text" id="editth" name="nguoinhan" value=""/></th>
                     </tr>
                     <tr>
                         <th>SĐT:</th>
-                        <th><input class="form-control" type="text" id="editth" name="sdt" value="<?php echo $history['sdt'];?>"/></th>
+                        <th><input class="form-control" type="text" id="editth" name="sdt" value=""/></th>
                     </tr>
                     <tr>
                         <th>Địa chỉ giao:</th>
-                        <th><input class="form-control" type="text" id="editth" name="diachigiao" value="<?php echo $history['diachigiao'];?>"/></th>
+                        <th><input class="form-control" type="text" id="editth" name="diachigiao" value=""/></th>
                     </tr>
                     <tr>
                         <th>PT thanh toán</th>
-                        <th><input class="form-control" disabled type="text" id="editth" name="ptthanhtoan" value="<?php echo $history['ptthanhtoan'];?>"/></th>
+                        <th><input class="form-control" disabled type="text" id="editth" name="ptthanhtoan" value=""/></th>
                     </tr>
                     <tr>
                         <th>Ngày tạo:</th>
-                        <th><input class="form-control" type="text" id="editth" disabled name="ngaytao" value="<?php echo $history['ngaytao'];?>"/></th>
+                        <th><input class="form-control" type="text" id="editth" disabled name="ngaytao" value=""/></th>
                     </tr>
                     <tr>
                         <th>Tình trạng:</th>
-                        <th><input class="form-control" type="text" id="editth" disabled name="tinhtrang" value="<?php echo $history['tinhtrang'];?>"/></th>
+                        <th><input class="form-control" type="text" id="editth" disabled name="tinhtrang" value=""/></th>
                     </tr>
                     <tr>
                         <th colspan="2">

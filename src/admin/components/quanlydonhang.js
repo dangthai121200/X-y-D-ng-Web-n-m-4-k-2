@@ -1,28 +1,56 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // <?php include "../../dao/OrderDAO.php" ?>
 // <?php
 // $orders = OrderDAO::getOrders($conn);
 // ?>
 // <?php include "./adminheader.php" ?>
 // <?php include("./adminnav.php") ?>
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { API_URL } from "../../redux/constants";
+import { useSelector } from 'react-redux';
+import Props from "../props/tbBill";
+import axios from "axios";
 
 export default function quanlydonhang() {
-    function  btnNavmenu(){        
+    function btnNavmenu() {
         const nav = document.getElementById("nav");
         const header = document.getElementsByTagName("header");
         const section = document.getElementsByTagName("section");
- 
-     if(nav.style.transform=="translateX(-100%)" && header[0].style.width=="0%" && section[0].style.width=="80%"){
-         nav.style.transform="translateX(0)";
-         header[0].style.width="20%";
-         section[0].style.width="60%";
-     }
-     else{
-         nav.style.transform="translateX(-100%)";
-         header[0].style.width="0%";
-         section[0].style.width="80%";
-     }   
- }
+
+        if (nav.style.transform == "translateX(-100%)" && header[0].style.width == "0%" && section[0].style.width == "80%") {
+            nav.style.transform = "translateX(0)";
+            header[0].style.width = "20%";
+            section[0].style.width = "60%";
+        }
+        else {
+            nav.style.transform = "translateX(-100%)";
+            header[0].style.width = "0%";
+            section[0].style.width = "80%";
+        }
+    }
+
+    const [listDon, setListDon] = useState([]);
+
+    const username = useSelector((state) => state.User.userInfo.username);
+    const password = useSelector((state) => state.User.userInfo.password);
+
+    useEffect(() => {
+        axios        
+            .get(`${API_URL}v1/orders`, {
+                auth: {
+                    username: username,
+                    password: password
+                }
+            })
+            .then(res => {
+                setListDon(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    })
+
+
     return (
         <section>
             <div className="container d-flex flex-column justify-content-around">
@@ -55,26 +83,7 @@ export default function quanlydonhang() {
                             <th scope="col" className="action">Hành động</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {/* <?php foreach ($orders as $order):?>
-                <tr>
-                    <th scope="row"><?php echo $order['madon']?></th>
-                    <td><?php echo $order['ngaytao']?></td>
-                    <td><?php echo $order['nguoinhan']?></td>
-                    <td><?php echo $order['sdt']?></td>
-                    <td><?php echo $order['diachigiao']?></td>
-                    <td><?php echo number_format( $order['tongtien'],0,",",".")." VND"?></td>
-                    <td><?php echo $order['tinhtrang']?></td>
-                    <td className="action d-flex justify-content-evenly align-items-center">
-                        <a href="./chitietdonhang.php?madon=<?php echo $order['madon']?>" className="sua">Xem</a>
-                        <a href="../controller/orderController.php?madon=<?php echo $order['madon']?>&action=xoa" className="xoa">Xóa</a>
-                        <?php if($order['tinhtrang']=="Chưa giao"): ?>
-                        <a href="../controller/orderController.php?madon=<?php echo $order['madon']?>&action=duyet" className="duyet">Duyệt</a>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-                <?php endforeach; ?> */}
-                    </tbody>
+                    <Props list = {listDon}/>
                 </table>
             </div>
         </section>

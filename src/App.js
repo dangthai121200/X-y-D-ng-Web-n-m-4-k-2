@@ -15,6 +15,11 @@ import AddProduct from './admin/components/addproduct';
 import AddSale from './admin/components/addKhuyenmai';
 import AddAdmin from './admin/components/addAdmin';
 import EditLaptop from './admin/components/editlaptop';
+import EditPhuKien from './admin/components/editPhuKien';
+import EditKhachHang from './admin/components/editthongtinkhachhang';
+import EditAdmin from './admin/components/editthongtinadmin';
+import EditKhuyenMai from './admin/components/editkhuyenmai';
+import ChiTieDonHang from './admin/components/chitietdonhang';
 import Music from './admin/components/music';
 
 
@@ -56,6 +61,12 @@ const App = () => {
         <Route path='/managestaff' element={<ManageStaff />} />
         <Route path='/manageproduct' element={<ManageProduct />} />
         <Route path='/editlaptop' element={<EditLaptop />} />
+        <Route path='/editphukien' element={<EditPhuKien />} />
+        <Route path='/editkhachhang' element={<EditKhachHang />} />
+        <Route path='/editadmin' element={<EditAdmin />} />
+        <Route path='/editkhuyenmai' element={<EditKhuyenMai />} />
+        <Route path='/chitietdonhang' element={<ChiTieDonHang />} />
+        
       </Routes>
       <BMusic />
     </BrowserRouter>

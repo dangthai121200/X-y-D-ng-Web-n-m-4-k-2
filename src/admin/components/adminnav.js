@@ -1,25 +1,38 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../../redux/userSlice';
 import imgLogo from "./logo.png";
 export default function adminNavbar() {
-    
+
+    // useSelector(state => state.User.status === false ? <Navigate replace  to='/'/> : <Navigate replace to='/admin'/>);
+
     let time = new Date().toLocaleTimeString();
     let date = new Date().toLocaleDateString("vi-VN");
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [ctime, setCtime] = useState(time);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [cdate, setCdate] = useState(date);
 
-    const UpdateTime =()=>{
+    const UpdateTime = () => {
         time = new Date().toLocaleTimeString();
         date = new Date().toLocaleDateString("vi-VN");
         setCtime(time);
         setCdate(date);
     };
 
-    setInterval(UpdateTime,1000)
-    
+    setInterval(UpdateTime, 1000)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+    const username = useSelector((state) => state.User.userInfo.username)
+    const onLogout = () => {
+        dispatch(logout())
+        navigate("/")
+    }
+
     return (
         <header>
             <nav className="nav" id="nav">
@@ -28,7 +41,7 @@ export default function adminNavbar() {
                 </Link>
                 <div className="clock">
                     <div className="name">
-                        {/* <?php echo $username ?> */}
+                        {username}
                     </div>
                     <div>
                         <h1>{ctime}</h1>
@@ -133,8 +146,8 @@ export default function adminNavbar() {
                 </div>
                 {/* <form action="../controller/logoutController.php"> */}
                 <div className="Exit">
-                    <a href="/"><button name="dangxuat" className="btnExit"> ĐĂNG XUẤT</button></a>
-                    </div>
+                    <a onClick={onLogout}><button name="dangxuat" className="btnExit"> ĐĂNG XUẤT</button></a>
+                </div>
                 {/* </form> */}
             </nav>
 

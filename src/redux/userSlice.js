@@ -18,7 +18,7 @@ let config = {
 export const login = createAsyncThunk(
    'userInfo/login',
    async(value)=>{
-       const {data} = await axios.post(`${API_URL}v1/admin/login`,value)
+       const {data} = await axios.post(`${API_URL}v1/admin/login`,value)       
        return data;
    }
 )

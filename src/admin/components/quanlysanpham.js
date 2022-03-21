@@ -31,6 +31,7 @@
 // ?>
 // <?php include("./adminnav.php") ?>
 import React, { useState,useEffect} from "react";
+import { API_URL } from "../../redux/constants";
 import {Link} from "react-router-dom";
 import Props from "../props/tbLaptop";
 import axios from "axios";
@@ -56,21 +57,8 @@ export default function quanlysanpham() {
  const [listSanPham,setListSanPham]= useState([]);
 
  useEffect(()=>{
-    // async function fetchList(){
-    //     try{
-    //     const Url ='https://laptopso1vn.herokuapp.com/v1/laptop';
-    //     const response = await fetch(Url);
-    //     const responseJSON = await response.json();        
-    //     const {data} = responseJSON;        
-    //     setListSanPham(data);
-
-    // } catch(error){
-    //     console.log('Failed:', error.message);
-    // }
-    // }
-    // fetchList();
     axios
-    .get ('https://laptopso1vn.herokuapp.com/v1/laptop')
+    .get (`${API_URL}v1/laptop`)
     .then (res =>{
         setListSanPham(res.data);
     })
@@ -114,37 +102,7 @@ export default function quanlysanpham() {
                             <th scope="col" className="hanhdong">Hành động</th>
                         </tr>
                     </thead>
-                    <Props list = {listSanPham}/>                    
-                    {/* <tbody id="products"> */}
-                        {/* <!-- <?php foreach($laptops as $laptop) :?>
-                <tr>
-                    <th scope="row"><?php echo $laptop['masp']?></th>
-                    <td><img src="<?php echo "./".$laptop["hinh"] ?>" alt=""></td>
-                    <td><?php echo $laptop['tensp']?></td>
-                    <td><?php echo  number_format($laptop['gia'],0,",",".")." VND"?></td>
-                    <td><?php echo $laptop['soluong']?></td>
-                    <td><?php echo $laptop['tinhtrang']?></td>
-                    <td className="action d-flex justify-content-around align-items-center">
-                        <a href="./editlaptop.php?masp=<?php echo $laptop['masp']?>" className="sua">Sửa</a>
-                        <a href="../controller/productController.php?action=delete&masp=<?php echo $laptop['masp']?>" className="xoa">Xóa</a>
-                    </td>
-                </tr>
-                <?php endforeach; ?>
-                <?php foreach($phukiens as $phukien) :?>
-                    <tr>
-                    <th scope="row"><?php echo $phukien['masp']?></th>
-                    <td><img src="<?php echo "./".$phukien["hinh"] ?>" alt=""></td>
-                    <td><?php echo $phukien['tensp']?></td>
-                    <td><?php echo  number_format($phukien['gia'],0,",",".")." VND"?></td>
-                    <td><?php echo $phukien['soluong']?></td>
-                    <td><?php echo $phukien['tinhtrang']?></td>
-                    <td className="action d-flex justify-content-around align-items-center">
-                        <a href="./editPhuKien.php?masp=<?php echo $phukien['masp']?>" className="sua">Sửa</a>
-                        <a href="../controller/AccessoryController.php?action=delete&masp=<?php echo $phukien['masp']?>" className="xoa">Xóa</a>
-                    </td>
-                </tr>
-                <?php endforeach; ?> --> */}
-                    {/* </tbody> */}
+                    <Props list = {listSanPham}/>
                 </table>
             </div>
         </section>

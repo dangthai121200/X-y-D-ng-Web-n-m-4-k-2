@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // <?php
 // include "../../controller/autoload.php";
 // include "../../dao/UserDAO.php";
@@ -30,7 +31,11 @@
 //   }
 // ?>
 // <?php include("./adminnav.php") ?>
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { API_URL } from "../../redux/constants";
+import { useSelector } from 'react-redux';
+import Props from "../props/tbUser";
+import axios from "axios";
 
 export default function quanlykhachhang() {
   function  btnNavmenu(){        
@@ -49,6 +54,28 @@ export default function quanlykhachhang() {
      section[0].style.width="80%";
  }   
 }
+
+const [listUser, setListUser] = useState([]);
+
+    const username = useSelector((state) => state.User.userInfo.username);
+    const password = useSelector((state) => state.User.userInfo.password);
+
+    useEffect(() => {
+        axios        
+            .get(`${API_URL}v1/users`, {
+                auth: {
+                    username: username,
+                    password: password
+                }
+            })
+            .then(res => {
+              setListUser(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    })
+
   return (
     <section>
       <div className="container d-flex flex-column justify-content-around">
@@ -80,22 +107,7 @@ export default function quanlykhachhang() {
               <th scope="col" className="action">Hành động</th>
             </tr>
           </thead>
-          <tbody>
-            {/* <?php foreach ($users as $user): ?>
-            <tr>
-              <th scope="row"><?php echo $user['makh'] ?></th>
-              <td><?php echo $user['ho']." ".$user['ten'] ?></td>
-              <td><?php echo $user['sdt'] ?></td>
-              <td><?php echo $user['diachi'] ?> </td>
-              <td><?php echo $user['email'] ?></td>
-              <td><?php echo $user['username'] ?></td>
-              <td className="action d-flex justify-content-around align-items-center">
-                <a href="./editthongtinkhachhang.php?makh=<?php echo $user['makh']?>" className="sua">Sửa</a>
-                <a href="../controller/customerController.php?action=delete&makh=<?php echo $user['makh'] ?>" className="xoa">Xóa</a>
-              </td>
-            </tr>
-            <?php endforeach; ?> */}
-          </tbody>
+          <Props list = {listUser}/>
         </table>
       </div>
     </section>
