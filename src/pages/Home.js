@@ -20,7 +20,7 @@ export default function Home() {
 
 
   const getListLaptop = async () =>{
-      const {data} = await axios.get("https://laptopso1vn.herokuapp.com/v1/categoryLaptop?fbclid=IwAR02t0zfOXCmvI7yl-RPrAR3TOQn0rSM2xmBJmUtkkWSWEbP5IlX9yUSXk0")
+      const {data} = await axios.get("https://laptopso1vn.herokuapp.com/v1/categoryLaptop")
       setListLapTop(data)
   }
 

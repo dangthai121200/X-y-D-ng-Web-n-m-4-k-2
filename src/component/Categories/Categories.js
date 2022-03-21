@@ -1,7 +1,13 @@
 import React from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import './Categories.css';
 
 export default function Categories(){
+
+    AOS.init();
+
     function  btnUp1(){
         const cateContent = document.querySelectorAll('.cateContent');
        const cateContentHeader= document.querySelectorAll('.cateContent_header');
@@ -67,9 +73,9 @@ export default function Categories(){
         // <!-- Cagories -->
 <section className="categories">
     <div className="container">
-        <h1 className="cateHeader text-center animate-left" id="categories">DANH MỤC SẢN PHẨM</h1>
+        <h1 data-aos="fade-down"  data-aos-duration="2000"  data-aos-delay="200" className="cateHeader text-center animate-left" id="categories">DANH MỤC SẢN PHẨM</h1>
         <div className="row">
-            <div className="col-xl-4 col-sm-12 col-12 animate-top">
+            <div data-aos="fade-right"  data-aos-duration="2000"  data-aos-delay="400" className="col-xl-4 col-sm-12 col-12 ">
                 <div className="cateImage">
                     <div className="cateImage_overlay">
                         <h2 className="cateImage_title">HỌC TẬP <br/> VĂN PHÒNG</h2>
@@ -96,7 +102,7 @@ export default function Categories(){
                     </button>
                 </div>
             </div>
-            <div className="col-xl-4 col-sm-12 col-12 col-sm-12 animate-bottom">
+            <div data-aos="fade-up"  data-aos-duration="2000"  data-aos-delay="600" className="col-xl-4 col-sm-12 col-12 col-sm-12 ">
                 <div className="cateImage cateImage--2">
                     <div className="cateImage_overlay">
                         <h2 className="cateImage_title cateImage_title--2">ĐỒ HỌA <br/> GAMING</h2>
@@ -124,7 +130,7 @@ export default function Categories(){
                     </button>
                 </div>
             </div>
-            <div className="col-xl-4 col-sm-12 col-12 animate-top">
+            <div data-aos="fade-left"  data-aos-duration="2000"  data-aos-delay="800" className="col-xl-4 col-sm-12 col-12 ">
                 <div className="cateImage cateImage--3">
                     <div className="cateImage_overlay">
                         <h2 className="cateImage_title cateImage_title--3">MỎNG NHẸ <br/> CAO CẤP</h2>

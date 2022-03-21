@@ -1,8 +1,10 @@
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function Footer() {
+  AOS.init();
   return (
-      
     <footer>
       <div className="container">
         <div className="back-to-top">
@@ -11,7 +13,12 @@ export default function Footer() {
           </a>
         </div>
         <div className="footer-content">
-          <div className="footer-content-about animate-top">
+          <div
+            data-aos="fade-down"
+            data-aos-duration="2000"
+            data-aos-delay="200"
+            className="footer-content-about"
+          >
             <h4>ABOUT ATLAPTOP</h4>
             <div className="asterisk">
               <i className="fa-solid fa-laptop fa-2xl"></i>
@@ -22,7 +29,12 @@ export default function Footer() {
               dịch vụ tốt nhất
             </p>
           </div>
-          <div className="footer-content-divider animate-bottom">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="2000"
+            data-aos-delay="400"
+            className="footer-content-divider"
+          >
             <div className="social-media">
               <h4>Follow along</h4>
               <ul className="social-icons">
@@ -53,7 +65,12 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="newsletter-container">
+            <div
+              data-aos="fade-left"
+              data-aos-duration="2000"
+              data-aos-delay="600"
+              className="newsletter-container"
+            >
               <h4>Newsletter</h4>
               <form action="" className="newsletter-form">
                 <input

@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Card from "../Card/Card";
 import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,6 +11,7 @@ import {API_URL} from '../../redux/constants'
 
 
 export default function SwiperShowCase({ title, listLap }) {
+  AOS.init();
   const laps = listLap && listLap.laptopList;
   const slideCount = laps && Math.round(laps.length / 6);
   const slides = [];
@@ -24,6 +27,8 @@ export default function SwiperShowCase({ title, listLap }) {
         <h1
           className="cateHeader text-center animate-top"
           id="categories__work"
+          data-aos='fade-down'
+          data-aos-duration='2000'
         >
           {title}
         </h1>
@@ -32,6 +37,9 @@ export default function SwiperShowCase({ title, listLap }) {
           spaceBetween={0}
           slidesPerView={1}
           navigation
+          data-aos='fade-right'
+          data-aos-duration='2000'
+          data-aos-delay='1000'
         >
           {
             slides.map((slide,index) => (
