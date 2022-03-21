@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // <?php
 // session_start();
 // if(!empty($_SESSION['error'])){
@@ -23,11 +24,36 @@
 //   session_destroy();
 // }
 // ?>
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { login } from "../../redux/userSlice";
+import { HTTP_STATUS } from '../../redux/constants';
 import imgLogo from "./logo.png";
 
 export default function adminLogin() {
+  let navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    onLogin();
+  }
+
+  const onLogin = () => {
+    if (username === "" || password === "") {
+      return
+    } else {
+      dispatch(login({ username, password }))
+    }
+  }
+
+  useSelector(state => state.User.loading === HTTP_STATUS.FULFILLED ? navigate("/admin") : '')
+
   return (
     <div className="main">
       <div className="sub-main">
@@ -41,17 +67,25 @@ export default function adminLogin() {
 
           </div>
           <div>
-            {/* <form class="form-signin" method="POST" action="../controller/loginAdminController.php"> */}
-            <form action="/admin" netlify>
+            {/* <form action="/admin"> */}
+            <form onSubmit={e => onSubmit(e)}>
               <div>
                 <i className="icon fa-solid fa-user"></i>
-                <input type="text" name="username" class="name" placeholder="Admin" required />
+                <input type="text" name="username" class="name" placeholder="Admin" value={username || ""} onChange={e => setUsername(e.target.value)} required />
               </div>
               <div className="second-input">
                 <i className="icon fa-solid fa-key"></i>
-                <input type="password" name="password" class="name" placeholder="Password" required />
-              </div>                                  
+                <input type="password" name="password" class="name" placeholder="Password" value={password || ""} onChange={e => setPassword(e.target.value)} required />
+              </div>
               <button class="login-button" name="action" value="login" type="submit">LOGIN</button>
+              {/* spinner */}
+              {useSelector(state => state.User.loading === HTTP_STATUS.PENDING ?
+                <button className="btn ">
+                  <span className="spinner-border spinner-border-sm"></span>
+                  Loading..
+                </button> : '')}
+              {/* end spinner */}
+              <h4 style={{color:"red"}}>{useSelector(state=>state.User.loading === HTTP_STATUS.REJECTED?"Sai tên đăng nhập hoặc mật khẩu":"")}</h4>
             </form>
           </div>
         </div>
@@ -61,41 +95,3 @@ export default function adminLogin() {
     </div>
   );
 }
-
-    // <section id="content" >
-    //   <div class="container width-register" >
-    //     <div class="row">
-    //       <div class="col-lg-10 col-xl-9 mx-auto">
-    //         <div class="card card-signin flex-row my-5">
-
-    //           <div class="card-body">
-    //             <h5 class="card-title text-center"></h5>
-    //             {/* <form class="form-signin" method="POST" action="../controller/loginAdminController.php"> */}
-    //             <form>
-    //               <div class="text-ds">
-    //                 <p>Username:</p>
-    //               </div>
-    //               <div class="form-label-group">
-    //                 <input type="text" name="username" id="inputEmail" class="form-control" placeholder="Email address" required />
-
-    //               </div>
-    //               <br />
-    //               <div class="text-ds">
-    //                 <p>Password:</p>
-    //               </div>
-    //               <div class="form-label-group">
-    //                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required />
-    //               </div>
-
-    //               <br />
-    //               <br />
-    //               <br />
-    //               <button class="btn btn-sm  btn-block" name="action" value="login" type="submit">LOGIN</button>
-
-    //             </form>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </section>

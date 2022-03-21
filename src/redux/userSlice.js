@@ -18,16 +18,8 @@ let config = {
 export const login = createAsyncThunk(
    'userInfo/login',
    async(value)=>{
-       const {data} = await axios.post(`${API_URL}v1/users/login`,value)
+       const {data} = await axios.post(`${API_URL}v1/admin/login`,value)
        return data;
-   }
-)
-
-export const register = createAsyncThunk(
-   'userInfo/register',
-   async(value)=>{
-      const {data} = await axios.post(`${API_URL}v1/users/register`,value)
-      return data;
    }
 )
 
@@ -60,19 +52,6 @@ export const userSlice = createSlice({
       state.message = payload
       
    },                                         //end login
-   [register.pending](state){                     //start register
-      state.loading = HTTP_STATUS.PENDING
-   },
-   [register.fulfilled](state,{payload}){
-      state.loading = HTTP_STATUS.FULFILLED
-      state.userInfo = payload
-      state.status = true
-   },
-   [register.rejected](state,{payload}){
-      state.loading = HTTP_STATUS.REJECTED
-      state.message = payload
-      
-   }                                      //end register
   }
 })
 export const {logout} = userSlice.actions;

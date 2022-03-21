@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 // <?php
 // include "../../controller/autoload.php";
 // include "../../dao/ProductDAO.php";
@@ -29,8 +30,10 @@
 //   }
 // ?>
 // <?php include("./adminnav.php") ?>
-import React from "react";
+import React, { useState,useEffect} from "react";
 import {Link} from "react-router-dom";
+import Props from "../props/tbLaptop";
+import axios from "axios";
 
 export default function quanlysanpham() {
     function  btnNavmenu(){        
@@ -49,6 +52,33 @@ export default function quanlysanpham() {
          section[0].style.width="80%";
      }   
  }
+
+ const [listSanPham,setListSanPham]= useState([]);
+
+ useEffect(()=>{
+    // async function fetchList(){
+    //     try{
+    //     const Url ='https://laptopso1vn.herokuapp.com/v1/laptop';
+    //     const response = await fetch(Url);
+    //     const responseJSON = await response.json();        
+    //     const {data} = responseJSON;        
+    //     setListSanPham(data);
+
+    // } catch(error){
+    //     console.log('Failed:', error.message);
+    // }
+    // }
+    // fetchList();
+    axios
+    .get ('https://laptopso1vn.herokuapp.com/v1/laptop')
+    .then (res =>{
+        setListSanPham(res.data);
+    })
+    .catch(err =>{
+        console.log(err);
+    })
+ },[])
+
     return (
         <section>
             <div className="container d-flex flex-column justify-content-around">
@@ -84,7 +114,8 @@ export default function quanlysanpham() {
                             <th scope="col" className="hanhdong">Hành động</th>
                         </tr>
                     </thead>
-                    <tbody id="products">
+                    <Props list = {listSanPham}/>                    
+                    {/* <tbody id="products"> */}
                         {/* <!-- <?php foreach($laptops as $laptop) :?>
                 <tr>
                     <th scope="row"><?php echo $laptop['masp']?></th>
@@ -113,7 +144,7 @@ export default function quanlysanpham() {
                     </td>
                 </tr>
                 <?php endforeach; ?> --> */}
-                    </tbody>
+                    {/* </tbody> */}
                 </table>
             </div>
         </section>

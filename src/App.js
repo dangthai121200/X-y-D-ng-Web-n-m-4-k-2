@@ -14,6 +14,7 @@ import AddAccessories from './admin/components/addaccessories';
 import AddProduct from './admin/components/addproduct';
 import AddSale from './admin/components/addKhuyenmai';
 import AddAdmin from './admin/components/addAdmin';
+import EditLaptop from './admin/components/editlaptop';
 import Music from './admin/components/music';
 
 
@@ -54,6 +55,7 @@ const App = () => {
         <Route path='/managesale' element={<ManageSale />} />
         <Route path='/managestaff' element={<ManageStaff />} />
         <Route path='/manageproduct' element={<ManageProduct />} />
+        <Route path='/editlaptop' element={<EditLaptop />} />
       </Routes>
       <BMusic />
     </BrowserRouter>
