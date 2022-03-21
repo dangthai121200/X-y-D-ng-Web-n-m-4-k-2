@@ -12,6 +12,7 @@ export default function SwiperLong({ title, listLap }) {
   const slides = [];
   for(let i = 0 ; i < slideCount ; i++) {
     const items = laps.slice(0,9);
+    laps.splice(0,items.length);
     slides.push(items);
   }
 

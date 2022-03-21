@@ -14,6 +14,7 @@ export default function SwiperShowCase({ title, listLap }) {
   const slides = [];
   for(let i = 0 ; i < slideCount ; i++) {
     const items = laps.slice(0,6);
+    laps.splice(0,items.length);
     slides.push(items);
   }
 
