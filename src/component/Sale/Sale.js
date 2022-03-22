@@ -1,12 +1,16 @@
 import React from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import School from "../../images/schoolsale.PNG"
 import Work from "../../images/newsale.PNG"
 
 export default function Sale({background}) {
+  AOS.init();
+
   return (
     // <!-- Sale -->
     <section className={background}>
-      <div className="container">
+      <div className="container" data-aos='fade-left' data-aos-duration='2000'>
         <div
           id="carouselExampleControls"
           className="carousel slide"

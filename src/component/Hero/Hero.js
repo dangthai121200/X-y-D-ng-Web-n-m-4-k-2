@@ -1,23 +1,29 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import ImageHero from "../../images/laptop-mong-nhe-gia-re-1-removebg-preview.png";
 export default function Hero() {
+
+  AOS.init();
+
   return (
     // <!-- Hero -->
     <div>
       <section className="hero" id="hero">
         <div className="container d-flex align-items-center justify-content-center hero__container">
-          <div className="slogan animate-left">
-            <h1 className="hero_header">
+          <div className="slogan ">
+            <h1 data-aos="fade-right"  data-aos-duration="2000"  data-aos-delay="200" className="hero_header">
               Chào mừng bạn đến với website của ATLAPTOP
             </h1>
-            <h4 className="hero_sub">
+            <h4 className="hero_sub" data-aos="fade-right"  data-aos-duration="2000" data-aos-delay="450">
               Chúng tôi là cửa hàng chuyên cung cấp các loại laptop chính hãng,
               đáp ứng mọi cấu hình và nhu cầu sử dụng của bạn.
             </h4>
-            <a href="#categories" className="btnHero">
+            <a href="#categories" className="btnHero" data-aos="fade"  data-aos-duration="2000" data-aos-delay="500">
               Xem Ngay
             </a>
           </div>
-          <div className="image animate-right">
+          <div data-aos="fade-left"  data-aos-duration="2000" data-aos-delay="400" className="image ">
             <img src={ImageHero} alt="Image Hero" />
           </div>
         </div>

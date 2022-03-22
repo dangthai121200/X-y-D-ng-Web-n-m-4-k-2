@@ -1,8 +1,17 @@
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 export default function LapFilter() {
+  AOS.init();
   return (
-    <div className="tool">
-      <h1 className="cateHeader text-center animate-top" id="categories__work">
+    <div
+      data-aos="fade-right"
+      data-aos-duration="2000"
+      data-aos-delay="200"
+      className="tool"
+    >
+      <h1 className="cateHeader text-center" id="categories__work">
         LAPTOP
       </h1>
       <form action="../controller/search.php" method="post">

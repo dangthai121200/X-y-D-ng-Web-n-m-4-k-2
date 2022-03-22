@@ -12,16 +12,15 @@ import axios from 'axios'
 
 export default function Home() {
 
-  const [listLaptop,setListLapTop] = useState(null);
+  const [listLaptop,setListLapTop] = useState();
 
   useEffect(()=>{
       getListLaptop();
-      console.log(listLaptop);
   },[])
 
 
   const getListLaptop = async () =>{
-      const {data} = await axios.get("https://laptopso1vn.herokuapp.com/v1/categoryLaptop?fbclid=IwAR1HbtVBvkQZGd6PjDar_ktt7MxtRYTJVaqcicF2K2Dz2quSyrOBm4z7wrQ")
+      const {data} = await axios.get("https://laptopso1vn.herokuapp.com/v1/categoryLaptop")
       setListLapTop(data)
   }
 
@@ -37,21 +36,21 @@ export default function Home() {
         textTwo="VĂN PHÒNG"
         subTitle="subsection__title animate-left"
       />
-      <SwiperShowCase title="LAPTOP HỌC TẬP VĂN PHÒNG" />
+      <SwiperShowCase title="LAPTOP HỌC TẬP VĂN PHÒNG" listLap={listLaptop&&listLaptop[0]} />
       <Subsection
         subNumber="sub1 sub2"
         textOne="ĐỒ HỌA"
         textTwo="GAMING"
         subTitle="subsection__title subsection__title2 animate-left"
       />
-      <SwiperShowCase title="LAPTOP ĐỒ HỌA - GAMING" />
+      <SwiperShowCase title="LAPTOP ĐỒ HỌA - GAMING" listLap={listLaptop&&listLaptop[1]} />
       <Subsection
         subNumber="sub1 sub3"
         textOne="CAO CẤP"
         textTwo="SANG CHẢNH"
         subTitle="subsection__title subsection__title3 animate-left"
       />
-      <SwiperShowCase title="LAPTOP CAO CẤP" />
+      <SwiperShowCase title="LAPTOP CAO CẤP" listLap={listLaptop&&listLaptop[2]} />
       <Contact />
       <Map/>
       <Footer/>

@@ -1,12 +1,16 @@
 import React from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './Contact.css'
 
+
 export default function Contact() {
+  AOS.init();
   return (
     <section className="contact">
       <div className="container container__contact">
-        <h1 className="contact__content__header animate-top">Contact us</h1>
-        <div className="contact__content animate-left">
+        <h1 data-aos='fade-down' data-aos-duration='2000' data-aos-delay='200' className="contact__content__header">Contact us</h1>
+        <div data-aos='fade-right' data-aos-duration='2000' data-aos-delay='400' className="contact__content ">
           <div className="content__info">
             <h2 className="content__header">
               Chúng tôi rất hân hạnh được lắng nghe các bạn
@@ -29,7 +33,7 @@ export default function Contact() {
               <i className="fa-solid fa-envelope"></i>atlaptop@gmail.com
             </p>
           </div>
-          <div className="content__form animate-right">
+          <div data-aos='fade-left' data-aos-duration='2000' data-aos-delay='600' className="content__form ">
             <input type="text" placeholder="Type your email..." />
             <input type="text" placeholder="Type title..." />
             <textarea

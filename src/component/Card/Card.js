@@ -1,38 +1,38 @@
 import React from "react";
 import laptest from "../../images/lap1.jpg";
 
-export default function Card() {
+export default function Card({img,name,cpu,ram,vga,ocung,manhinh,gia}) {
   return (
     <div className="item">
       <div className="item__image">
-        <img src={laptest} alt="" />
+        <img src={img} alt="" />
         <a href="#" className="image__more">
           Xem thêm
         </a>
       </div>
-      <h3 className="item__name">Laptop HP</h3>
+      <h3 className="item__name">{name}</h3>
       <div className="item__detail">
         <table>
           <tbody>
             <tr>
               <th>CPU:</th>
-              <td>Intel Core</td>
+              <td>{cpu}</td>
             </tr>
             <tr>
               <th>RAM:</th>
-              <td>4gb</td>
+              <td>{ram}</td>
             </tr>
             <tr>
-              <th>VGA</th>
-              <td>Intel UHD</td>
+              <th>VGA:</th>
+              <td>{vga}</td>
             </tr>
             <tr>
               <th>Ổ cứng:</th>
-              <td>256gb</td>
+              <td>{ocung}</td>
             </tr>
             <tr>
               <th>Màn hình:</th>
-              <td>14 inches</td>
+              <td>{manhinh}</td>
             </tr>
           </tbody>
         </table>
@@ -44,7 +44,7 @@ export default function Card() {
             <i className="fa-solid fa-cart-arrow-down"></i>
           </button>
         </form>
-        <div className="price">12.490.000 VND</div>
+        <div className="price">{gia.toLocaleString('it-IT', {style : 'currency', currency : 'VND'})}</div>
       </div>
     </div>
   );
