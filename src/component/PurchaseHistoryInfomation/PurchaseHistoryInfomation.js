@@ -31,7 +31,7 @@ export default function PurchaseHistoryInfomation() {
                             <td></td>
                             <td>
                                 <Link to="/" className="xem">Xem</Link>
-                                <Link to="/" className="sua">FBack</Link>
+                                <Link to="/AddFeedBack" className="sua">FBack</Link>
                             </td>
                         </tr>
                     </tbody>

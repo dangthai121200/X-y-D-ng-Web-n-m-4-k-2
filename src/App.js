@@ -13,8 +13,8 @@ import About from './pages/About';
 import Cart from './pages/Cart';
 import Pay from './pages/Pay';
 import AccountInfo from './pages/AccountInfo';
-// import AddFeedBack from './pages/AddFeedBack';
-// import PurchaseHistory from './pages/PurchaseHistory';
+import AddFeedBack from './pages/AddFeedBack';
+import PurchaseHistory from './pages/PurchaseHistory';
 // import OrderDetail from './pages/OrderDetail';
 
 const App = () => {
@@ -32,8 +32,9 @@ const App = () => {
       <Route exact path='/Contact' element={<ContactPage/>}/>
       <Route exact path='/Aboutus' element={<About/>}/>
       <Route exact path='/Cart' element={<Cart/>}/>
-      <Route exact path='/AccountInfo' element={<AccountInfo  />}/>
-
+      <Route exact path='/AccountInfo' element={<AccountInfo/>}/>
+      <Route exact path='/history' element={<PurchaseHistory/>}/>
+      <Route exact path='/AddFeedBack' element={<AddFeedBack/>}/>
       </Routes>
     </BrowserRouter>
   )
