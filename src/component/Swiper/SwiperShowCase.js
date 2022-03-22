@@ -14,6 +14,7 @@ export default function SwiperShowCase({ title, listLap }) {
   AOS.init();
   const laps = listLap && listLap.laptopList;
   const slideCount = laps && Math.round(laps.length / 6);
+  const sum = laps && laps.length;
   const slides = [];
   for(let i = 0 ; i < slideCount ; i++) {
     const items = laps.slice(0,6);
@@ -30,7 +31,7 @@ export default function SwiperShowCase({ title, listLap }) {
           data-aos='fade-down'
           data-aos-duration='2000'
         >
-          {title}
+          {title} Tổng: {sum && sum}
         </h1>
         <Swiper
           modules={[Navigation]}
@@ -57,6 +58,7 @@ export default function SwiperShowCase({ title, listLap }) {
                    gia={item.gia}
                  />
                 ))}
+                <p style={{position:"absolute",left:5,bottom:5}}>{index+1}/{slideCount}</p>
               </SwiperSlide>
             ))
           }
