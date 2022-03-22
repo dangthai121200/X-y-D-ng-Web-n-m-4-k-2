@@ -43,58 +43,30 @@ export default function admin(){
             <div className="count__product col-4">
                 <h2 className="count__title">SỐ LƯỢNG SẢN PHẨM</h2>
                 <div className="soluong">
-                    Đã bán:1
-                    {/* <?php
-                    if (!empty($soLuongSpDaBan['soluong']))
-                        echo $soLuongSpDaBan['soluong']. " sản phẩm";
-                    else
-                        echo "0 sản phẩm";
-                    ?> */}
+                    Đã bán:0
                 </div>
                 <div className="soluong">
-                    Còn lại:2
-                    {/* <?php
-                    if (!empty($soLuongSpConLai['soluong']))
-                        echo $soLuongSpConLai['soluong']. " sản phẩm";
-                    else
-                        echo "0 sản phẩm";
-                    ?> */}
+                    Còn lại:0
                 </div>
             </div>
             <div className="count__member col-4">
                 <h2 className="count__title">SỐ LƯỢNG THÀNH VIÊN</h2>
                 <div className="soluong">
-                    500 ae
-                    {/* <?php
-                    if (!empty($soLuongThanhVien['soluong']))
-                        echo $soLuongThanhVien['soluong']." thành viên";
-                    else
-                        echo "0  thành viên";
-                    ?> */}
+                    500 thành viên
+
                 </div>
             </div>
             <div className="count__order col-4">
                 <h2 className="count__title">SL ĐƠN CHƯA GIAO</h2>
                 <div className="soluong">
                     2 đơn
-                    {/* <?php
-                    if (!empty($soLuongDonChuaGiao['soluong']))
-                        echo $soLuongDonChuaGiao['soluong']." đơn";
-                    else
-                        echo "0  đơn";
-                    ?> */}
                 </div>
             </div>
         </div>
         <div className="income row text-center mt-5">
             <h2 className="count__title">TỔNG DOANH THU</h2>
             <div className="soluong soluong--doanhthu">                
-                {/* <?php
-                if (!empty($doanhThu['doanhthu']))
-                    echo number_format($doanhThu['doanhthu'],0,",",".")." VND";
-                else
-                    echo "0 VND";
-                ?> */}
+                1,000,000,000 VND
             </div>
         </div>
     </div>
