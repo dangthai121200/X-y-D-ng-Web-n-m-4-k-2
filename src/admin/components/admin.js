@@ -12,7 +12,7 @@
 // ?>
 
 import React from "react";
-
+        
 export default function admin(){
     function  btnNavmenu(){        
         const nav = document.getElementById("nav");

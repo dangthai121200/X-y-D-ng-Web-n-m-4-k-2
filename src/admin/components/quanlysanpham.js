@@ -90,8 +90,8 @@ export default function quanlysanpham() {
                         <button type="submit"><i className="fa-solid fa-magnifying-glass"></i></button>
                     </div>
                 </div>
-                <table className="table .table-striped" id="showCase">
-                    <thead>
+                {/* <table className="table .table-striped" id="showCase"> */}
+                    {/* <thead>
                         <tr>
                             <th scope="col" className="ma">Mã SP</th>
                             <th scope="col" className="hinh">Hình</th>
@@ -101,9 +101,9 @@ export default function quanlysanpham() {
                             <th scope="col" className="tinhtrang">Tình trạng</th>
                             <th scope="col" className="hanhdong">Hành động</th>
                         </tr>
-                    </thead>
-                    <Props list = {listSanPham}/>
-                </table>
+                    </thead> */}
+                    <Props list = {listSanPham}/>                    
+                {/* </table> */}
             </div>
         </section>
     );
