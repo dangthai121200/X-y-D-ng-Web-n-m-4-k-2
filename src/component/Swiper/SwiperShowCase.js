@@ -48,6 +48,7 @@ export default function SwiperShowCase({ title, listLap }) {
                 {slide.map(item => (
                    <Card
                    key={item.maSp}
+                   id={item.maSp}
                    img={`${API_URL}/${item.hinh}`}
                    name={item.tenSp}
                    cpu={item.cpu}
